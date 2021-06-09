@@ -1,18 +1,15 @@
-# orcrist-umframe 
-# base umijs@2.13.x
-# node>=10
-## Quick Overview
-```sh
-npm i -g orcrist-umframe
+# umi project
 
-orcrist-umframe init
+## Getting Started
 
---mobile
---web
+Install dependencies,
 
-cd [my-app]
+```bash
+$ yarn
+```
 
-cnpm install
+Start the dev server,
 
-npm start
+```bash
+$ yarn start
 ```

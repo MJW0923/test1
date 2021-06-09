@@ -1,63 +1,35 @@
-import {IConfig} from 'umi-types';
-import pageRoutes from './router.config';
+import { IConfig } from 'umi';
+import routes from './routes';
 
 const config: IConfig = {
   targets: {
     android: 5,
-    chrome: 49,
-    edge: 13,
+    // chrome: 49,//默认49
+    // edge: 13,//默认13
     firefox: 45,
     ie: 9,
     ios: 7,
-    safari: 10,
+    // safari: 10,//默认10
   },
-  
-  base: '/',
+  base: '/demo/',
   publicPath: './',
-  treeShaking: true,
-  history: 'browser',
+  history: { type: 'hash' },
+  // history: { type: 'browser' },
+  // exportStatic: {
+  //   htmlSuffix: true,
+  //   dynamicRoot: true,
+  // },
   hash: true,
   ignoreMomentLocale: true,
-  routes: pageRoutes,
-  plugins: [
-    [
-      'umi-plugin-react',
-      {
-        antd: true,
-        dva: {
-          hmr: true,
-        },
-        dynamicImport: {
-          webpackChunkName: true,
-        },
-        title: '',
-        links: [{ rel: 'icon', href: '<%= PUBLIC_PATH %>static/favico.png' }],
-        dll: true,
-        hd: false,
-        fastClick: false,
-        locale: {
-          enable: true,
-          default: 'en-US',
-        },
-        routes: {
-          exclude: [
-            /models\//,
-            /services\//,
-            /model\.(t|j)sx?$/,
-            /service\.(t|j)sx?$/,
-            /components\//,
-          ],
-        },
-      },
-    ],
-  ],
+  routes: routes,
+  antd: {},
+  dva: {},
+  links: [{ rel: 'icon', href: './assets/icon.png' }], //本地icon存放在public目录下
   outputPath: './dist',
-  alias: {
-    '@': require('path').resolve(__dirname, 'src'),
-  },
-  // chainWebpack(config, { webpack }) {
-  //   config.plugin('bundle').use(require('umi-webpack-bundle-analyzer').BundleAnalyzerPlugin);
+
+  // alias: {
+  //   '@': require('path').resolve(__dirname, 'src'),//umi 默认src目录
   // },
-}
+};
 
 export default config;
