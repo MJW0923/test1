@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
+import { history } from 'umi';
 import { connect } from 'dva';
 import styles from './style.less';
-import JwLoading from '@/components/JwLoading';
-import { Link } from 'umi';
 
 interface IProps {
   dispatch: Function;
@@ -20,6 +19,9 @@ class List extends Component<IProps, IState> {
     document.title = '';
   }
 
+  onBtnClick = (path: string) => {
+    history.push(path);
+  };
   render() {
     const {} = this.props;
     console.log('this.props===', this.props);
@@ -28,7 +30,7 @@ class List extends Component<IProps, IState> {
       <div className={styles.listmain}>
         test是听说
         <br />
-        <Link to="/home">list</Link>
+        <button onClick={() => this.onBtnClick('/home')}>list</button>
       </div>
     );
   }
